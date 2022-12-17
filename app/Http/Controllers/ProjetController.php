@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Action;
+use App\Models\Passation;
 use App\Models\Projet;
 use App\Rules\Uppercase;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Gate;
 
 use function PHPUnit\Framework\isEmpty;
 use Illuminate\Support\Facades\Storage;
+
+use Barryvdh\DomPDF\PDF;
 
 class ProjetController extends Controller
 {
@@ -33,13 +36,15 @@ class ProjetController extends Controller
 
         $projet = Projet::findOrFail($id);
         $actions = Action::where('projet_id', $id)->paginate(5);;
-        //$projet = Projet::where('projectName','=','Pierre')->firstOrFail();
 
-        return view('projet', [
+
+        return view('projetResume', [
             'projet' => $projet,
             'actions' => $actions
         ]);
     }
+
+    
 
     public function createProjet()
     {
@@ -83,4 +88,7 @@ class ProjetController extends Controller
         return view('listeProjets',['projets'=>$projets]);
 
     }
+
+
+
 }

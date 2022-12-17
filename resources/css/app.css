@@ -1,5 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'bootstrap';
 
+/* code mirror
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/dracula.css'; */
 
+@import 'trumbowyg/dist/ui/trumbowyg.css'
